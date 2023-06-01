@@ -1,12 +1,10 @@
 import math
 
-# Returns the point with least y coordinate from a list of 2D points.
+# Returns the point with least y coordinate from a list of 2D points. Tiebreaker is least x.
 def get_minimum_y(points):
 	minimum_point = [math.inf, math.inf]
 	for point in points:
-		if point[1] < minimum_point[1]:
-			minimum_point = point
-		elif point[1] == minimum_point[1] and point[0] < minimum_point[0]:
+		if point[1] < minimum_point[1] or (point[1] == minimum_point[1] and point[0] < minimum_point[0]):
 			minimum_point = point
 	return minimum_point
 
