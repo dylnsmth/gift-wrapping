@@ -60,19 +60,6 @@ def uncenter_points(points, center):
 def orientation(point1, point2, point3):
 	value = (point2[1] - point1[1])*(point3[0]-point2[0]) - (point2[0]-point1[0])*(point3[1]- point2[1])
 	return value
-		
-# With orientation function, this is depreciated.
-	# def angle_betwixt(point1, point2, point3):
-	#	print(point1)
-	#	print(point2)
-	#	print(point3)
-	#	point1[0] -= point2[0]
-	#	point1[1] -= point2[1]
-	#	point3[0] -= point2[0]
-	#	point3[1] -= point2[1]
-	#	# using dot product formula
-	#	angle = math.acos((point1[0]*point3[0] + point1[1]*point3[1]) / (math.hypot(point1[0], point1[1]) * math.hypot(point3[0], point3[1])))
-	#	print(angle)
 
 # Performs the Graham Scan on a list of 2D of points; returns the convex hull as an ordered list.
 def graham_scan(points):
