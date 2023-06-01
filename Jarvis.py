@@ -1,5 +1,21 @@
 import math
 
+def angle_betwixt(p1, p2, p3):
+    point1 = [p1[0], p1[1]]
+    point2 = [p2[0], p2[1]]
+    point3 = [p3[0], p3[1]]
+    point1[0] -= point2[0]
+    point1[1] -= point2[1]
+    point3[0] -= point2[0]
+    point3[1] -= point2[1]
+#     # using dot product formula
+    angle = math.acos((point1[0]*point3[0] + point1[1]*point3[1]) / (math.hypot(point1[0], point1[1]) * math.hypot(point3[0], point3[1])))
+    return angle
+
+def orientation(point1, point2, point3):
+    value = (point2[1] - point1[1])*(point3[0]-point2[0]) - (point2[0]-point1[0])*(point3[1]- point2[1])
+    return value
+
 class Jarvis:
     def jarvisMarch(points):
         hull = []
@@ -11,50 +27,39 @@ class Jarvis:
                 left = p
             if p[0] > right[0]:
                 right = p
-
-        curPoint = left 
-        curSlope = math.inf
+        
+        point1 = [left[0], -1000000]
+        point2 = left
         hull.append(left)
         hullFinished = False
-        rightReached = False
 
         # while we haven't reached the original point again:
         while hullFinished == False:
+            bestPoint = p[0]
+            bestAngle = -math.inf
+
             if len(points) == 0:
                 break
             bestPoint = points[0]
-            bestSlope = math.inf
-            minSlopeDifference = math.inf
             
             # choose the point that has the greatest angle w/ respect to the current point
             for p in points:
-                if curPoint[0] != p[0]:
-                    pSlope = (curPoint[1] - p[1]) / (curPoint[0] - p[0])
-                    dif = curSlope - pSlope # calculate difference in slopes
-#                     print(dif)
-                    if dif < minSlopeDifference and dif > 0
-                    # until we reach the rightmost point, we want the slope to be the closest one that is smaller than the current slope 
-                    if (dif < minSlopeDifference or minSlopeDifference == math.inf) and not p == left and not rightReached and dif != 0:
-                        minSlopeDifference = dif
-                        bestPoint = p
-                    elif (dif < minSlopeDifference or minSlopeDifference == math.inf) and rightReached:
-                        minSlopeDifference = dif
-                        bestPoint = p
-                            
+                if (p == point1) or (p == point2):
+                    continue
+                angle = angle_betwixt(point1, point2, p)
+                if angle > bestAngle:
+                    bestAngle = angle
+                    bestPoint = p
+
             #remove bestPoint from points
             points.remove(bestPoint)
 
-            if bestPoint == right:
-                rightReached = True
-
             hull.append(bestPoint)
-            curSlope = bestSlope
-
-            # update cur
-            curPoint = bestPoint
+            point1 = point2
+            point2 = bestPoint
 
             # if we get back to the start, we're done :)
-            if curPoint == left:
+            if bestPoint == left:
                 hullFinished = True
         # return the hull
         return hull
