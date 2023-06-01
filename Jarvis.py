@@ -8,7 +8,7 @@ def angle_betwixt(p1, p2, p3):
     point1[1] -= point2[1]
     point3[0] -= point2[0]
     point3[1] -= point2[1]
-#     # using dot product formula
+    # using dot product formula
     angle = math.acos((point1[0]*point3[0] + point1[1]*point3[1]) / (math.hypot(point1[0], point1[1]) * math.hypot(point3[0], point3[1])))
     return angle
 
