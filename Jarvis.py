@@ -23,14 +23,16 @@ class Jarvis:
             if len(points) == 0:
                 break
             bestPoint = points[0]
+            bestSlope = math.inf
             minSlopeDifference = math.inf
             
             # choose the point that has the greatest angle w/ respect to the current point
             for p in points:
                 if curPoint[0] != p[0]:
                     pSlope = (curPoint[1] - p[1]) / (curPoint[0] - p[0])
-                    dif = abs(curSlope - pSlope) # calculate difference in slopes
-                    print(dif)
+                    dif = curSlope - pSlope # calculate difference in slopes
+#                     print(dif)
+                    if dif < minSlopeDifference and dif > 0
                     # until we reach the rightmost point, we want the slope to be the closest one that is smaller than the current slope 
                     if (dif < minSlopeDifference or minSlopeDifference == math.inf) and not p == left and not rightReached and dif != 0:
                         minSlopeDifference = dif
@@ -46,6 +48,7 @@ class Jarvis:
                 rightReached = True
 
             hull.append(bestPoint)
+            curSlope = bestSlope
 
             # update cur
             curPoint = bestPoint
