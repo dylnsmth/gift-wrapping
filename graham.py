@@ -18,6 +18,8 @@ def get_polar_points(points):
 			theta = 0
 		else:
 			theta = math.atan(1.0 * point[1] / point[0])
+			if theta < 0:
+				theta = theta + math.pi
 		new_point = [r, theta]
 		polar_points.append(new_point)
 	return polar_points
@@ -53,6 +55,14 @@ def uncenter_points(points, center):
 		point[1] += center[1]
 	return points
 
+def prune_points(points):
+	i = 0
+	while i < len(points)-1:
+		while points[i][3] == points[i+1][3]:
+			points.remove(points[i])
+		i = i+1
+	return points
+
 # Calculates orientation of three odered points. Returns:
 	# 0 if colinear
 	# positive value if point1 -> point2 -> point3 -> point1 goes clockwise
@@ -66,10 +76,11 @@ def graham_scan(points):
 	min_point = get_minimum_y(points)
 	points.remove(min_point)
 	# Sorts all points by counter-clockwise angle from min_point. 
-	# Shift points with respect to min_point, find angles and lengths, sort, then hide angles/lengths and undo shift.
+	# Shift points with respect to min_point, find angles and lengths, sort them, prune any duplicate angles, then hide angles/lengths and undo shift.
 	points = recenter_points(points, min_point)
 	points = extend_into_polar(points)
-	points = sorted(points, key=lambda element: (element[3], element[2])) 
+	points = sorted(points, key=lambda element: (element[3], element[2]))
+	points = prune_points(points)
 	points = restrict_from_polar(points)
 	points = uncenter_points(points, min_point)
 	# Make a stack to keep track of our convex hull. 
