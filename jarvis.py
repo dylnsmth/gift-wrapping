@@ -85,3 +85,6 @@ def main():
     
     points = input("please enter a list of points here:\n")
     print(jarvisMarch(points))
+
+
+main()
