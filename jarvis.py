@@ -83,7 +83,8 @@ def main():
     points1 = [p1, p2, p3, p4, p5, p6, p7]
     points2 = [[1,3], [5,6], [2,4], [6,8], [1,6], [2,5], [5,2], [3,3], [1,7], [9,2], [2,2]]
     
-    points = input("please enter a list of points here:\n")
+    points = eval(input("please enter a list of points here:\n"))
+    print("\nThe points in the convex hull are:")
     print(jarvisMarch(points))
 
 
