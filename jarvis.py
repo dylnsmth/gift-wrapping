@@ -1,8 +1,7 @@
 import math
 
-
-
-
+# performs the Jarvis mMrch on a list of 2D points
+# returns the convex hull as an ordered list.
 def jarvisMarch(points):
     hull = []
 
