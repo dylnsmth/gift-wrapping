@@ -80,10 +80,8 @@ def main():
     p5 = [4,3]
     p6 = [5, 1.3]
     p7 = [2, 4]
-    points = [p1, p2, p3, p4, p5, p6, p7]
+    points1 = [p1, p2, p3, p4, p5, p6, p7]
     points2 = [[1,3], [5,6], [2,4], [6,8], [1,6], [2,5], [5,2], [3,3], [1,7], [9,2], [2,2]]
-    print(jarvisMarch(points2))
-
-if __name__ == "__main__":
-    main()
-
+    
+    points = input("please enter a list of points here:\n")
+    print(jarvisMarch(points))
