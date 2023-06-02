@@ -39,7 +39,7 @@ def jarvisMarch(points):
             # if we get back to the start, we're done :)
             hullFinished = True
         else:
-            # remove bestPoint from points and adds it to the hull
+            # remove bestPoint from points and add it to the hull
             points.remove(bestPoint)
             hull.append(bestPoint)
 
@@ -59,6 +59,7 @@ def getLeftmostPoint(points):
 
 # finds the angle between three points
 def angleBetween(p1, p2, p3):
+    # avoid overwriting the points
     point1 = p1.copy();
     point2 = p2.copy();
     point3 = p3.copy();
