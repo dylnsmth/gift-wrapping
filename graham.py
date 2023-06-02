@@ -40,7 +40,7 @@ def restrict_from_polar(points):
 		new_points.append([point[0], point[1]])
 	return new_points
 
-# Translates points with respect to a new origin point.
+# Translates points with respect to a new origin point. 
 def recenter_points(points, center):
 	for point in points:
 		point[0] -= center[0]
@@ -55,6 +55,7 @@ def uncenter_points(points, center):
 		point[1] += center[1]
 	return points
 
+# Given a list of points in form [x,y,r,theta] sorted by theta and r, for any pair of points with equal angle values, this removes the point with lesser r.
 def prune_points(points):
 	i = 0
 	while i < len(points)-1:
@@ -71,7 +72,7 @@ def orientation(point1, point2, point3):
 	value = (point2[1] - point1[1])*(point3[0]-point2[0]) - (point2[0]-point1[0])*(point3[1]- point2[1])
 	return value
 
-# Performs the Graham Scan on a list of 2D of points; returns the convex hull as an ordered list.
+# Performs the Graham Scan on a list of 2D points; returns the convex hull as an ordered list.
 def graham_scan(points):
 	min_point = get_minimum_y(points)
 	points.remove(min_point)
@@ -94,6 +95,7 @@ def graham_scan(points):
 			stack_end = len(stack)-1
 		stack.append(points[i])
 	return stack
+
 
 def main():
     points = eval(input("please enter a list of points here:\n"))
