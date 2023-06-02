@@ -73,14 +73,7 @@ def angleBetween(p1, p2, p3):
     return angle
 
 def main():
-    p1 = [2,3]
-    p2 = [1, 2]
-    p3 = [1.4,5]
-    p4 = [3, 2.1]
-    p5 = [4,3]
-    p6 = [5, 1.3]
-    p7 = [2, 4]
-    points1 = [p1, p2, p3, p4, p5, p6, p7]
+    points1 = [[2,3], [1, 2], [1.4,5], [3, 2.1], [4,3], [5, 1.3], [2, 4]]
     points2 = [[1,3], [5,6], [2,4], [6,8], [1,6], [2,5], [5,2], [3,3], [1,7], [9,2], [2,2]]
     
     points = eval(input("please enter a list of points here:\n"))
