@@ -96,9 +96,6 @@ def graham_scan(points):
 	return stack
 
 def main():
-    points1 = [[2,3], [1, 2], [1.4,5], [3, 2.1], [4,3], [5, 1.3], [2, 4]]
-    points2 = [[1,3], [5,6], [2,4], [6,8], [1,6], [2,5], [5,2], [3,3], [1,7], [9,2], [2,2]]
-    
     points = eval(input("please enter a list of points here:\n"))
     print("\nThe points in the convex hull are:")
     print(graham_scan(points))
