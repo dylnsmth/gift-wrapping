@@ -17,4 +17,4 @@ Let's wrap some gifts together!
   - this file contains two lists of points that can be used to test our programs
 
 ### How to use
-Run graham.py or jarvis.py. Enter a list of points when prompted.
+Run graham.py or jarvis.py. Enter a list of points when prompted (possibly by copying and pasting from test-cases.py)
